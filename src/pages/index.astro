@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <!doctype html>
@@ -11,8 +12,8 @@ import Header from "../components/Header.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Accueil</title>
 	</head>
-	<Header></Header>
-		<body>
-			<h1>Hello, Astro!</h1>
-		</body>
+	<Header />
+	<body>
+		<h1>Hello, Astro!</h1>
+	</body>
 </html>
