@@ -13,7 +13,7 @@ const offres = [
         nomMaison: "Topaz",
         prix: 110000,
         surface: 145,
-        imgUrl: ["image1.png", "image2.png", "image3.png"],
+        imgUrl: "image1.png",
     },
     {
         adresse: "1 rue des lacs, Autriche",
@@ -24,7 +24,7 @@ const offres = [
         nomMaison: "Sapphire",
         prix: 1950000,
         surface: 1060,
-        imgUrl: ["image1.png", "image2.png", "image3.png"],
+        imgUrl: "image1.png",
     },
     {
         adresse: "402 route de la fortune, Allemagne",
@@ -35,7 +35,7 @@ const offres = [
         nomMaison: "Emerald",
         prix: 196000,
         surface: 85,
-        imgUrl: ["image1.png", "image2.png", "image3.png"],
+        imgUrl: "image1.png",
     },
     {
         adresse: "18 rue de la lavande, Suisse",
@@ -46,7 +46,7 @@ const offres = [
         nomMaison: "Amethyst",
         prix: 860000,
         surface: 600,
-        imgUrl: ["image1.png", "image2.png", "image3.png"],
+        imgUrl: "image1.png",
     },
     {
         adresse: "5 rue des dalmatiens, France",
@@ -57,16 +57,53 @@ const offres = [
         nomMaison: "Diamond",
         prix: 310000,
         surface: 110,
-        imgUrl: ["image1.png", "image2.png", "image3.png"],
+        imgUrl: "image1.png",
     },
 ];
 ---
 
 <Layout titre="Offres">
     <h1>Offres</h1>
+    <button
+        id="favori-button"
+        class="bg-slate-600 rounded-lg text-white p-2 mb-4 hover:bg-slate-800 transition">
+        Afficher les favoris
+    </button>
+
     <div>
-        {offres.map((offre) => (
-            <OffreCard offre={offre} />
-        ))}
+        {
+            offres.map((offre) => (
+                <div class="offre" data-favori={offre.favori.toString()}>
+                    <OffreCard offre={offre} />
+                </div>
+            ))
+        }
     </div>
+
+    <script>
+        const button = document.getElementById("favori-button");
+        let showOnlyFavorites = false;
+
+        button?.addEventListener("click", () => {
+            showOnlyFavorites = !showOnlyFavorites;
+            const offres = document.querySelectorAll(
+                ".offre",
+            ) as NodeListOf<HTMLElement>;
+
+            offres.forEach((offre) => {
+                const isFavori = offre.dataset.favori === "true";
+                if (showOnlyFavorites && !isFavori) {
+                    offre.style.display = "none";
+                } else {
+                    offre.style.display = "";
+                }
+            });
+
+            if (button) {
+                button.textContent = showOnlyFavorites
+                    ? "Afficher tout"
+                    : "Afficher les favoris";
+            }
+        });
+    </script>
 </Layout>
