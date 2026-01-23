@@ -2,17 +2,71 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Layout from "../layouts/Layout.astro";
+import OffreCard from "../components/OffreCard.astro";
+const offres = [
+    {
+        adresse: "46 rue de la plage, Portugal",
+        favori: true,
+        id: "tf2h8bu0f3bp6c7",
+        nbChambres: 2,
+        nbSdb: 1,
+        nomMaison: "Topaz",
+        prix: 110000,
+        surface: 145,
+        imgUrl: ["image1.png", "image2.png", "image3.png"],
+    },
+    {
+        adresse: "1 rue des lacs, Autriche",
+        favori: false,
+        id: "hwibpvlyuotozh9",
+        nbChambres: 4,
+        nbSdb: 1,
+        nomMaison: "Sapphire",
+        prix: 1950000,
+        surface: 1060,
+        imgUrl: ["image1.png", "image2.png", "image3.png"],
+    },
+    {
+        adresse: "402 route de la fortune, Allemagne",
+        favori: false,
+        id: "db7q8cl125q7lcq",
+        nbChambres: 1,
+        nbSdb: 1,
+        nomMaison: "Emerald",
+        prix: 196000,
+        surface: 85,
+        imgUrl: ["image1.png", "image2.png", "image3.png"],
+    },
+    {
+        adresse: "18 rue de la lavande, Suisse",
+        favori: false,
+        id: "thhvdhgh8nr2ei8",
+        nbChambres: 3,
+        nbSdb: 2,
+        nomMaison: "Amethyst",
+        prix: 860000,
+        surface: 600,
+        imgUrl: ["image1.png", "image2.png", "image3.png"],
+    },
+    {
+        adresse: "5 rue des dalmatiens, France",
+        favori: false,
+        id: "adeszkyjd40brh0",
+        nbChambres: 2,
+        nbSdb: 1,
+        nomMaison: "Diamond",
+        prix: 310000,
+        surface: 110,
+        imgUrl: ["image1.png", "image2.png", "image3.png"],
+    },
+];
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <title>Offres</title>
-    </head>
-    <Layout titre="Offres">
-        <h1>Offres</h1>
-    </Layout>
-</html>
+<Layout titre="Offres">
+    <h1>Offres</h1>
+    <div>
+        {offres.map((offre) => (
+            <OffreCard offre={offre} />
+        ))}
+    </div>
+</Layout>
